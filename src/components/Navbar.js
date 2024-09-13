@@ -8,6 +8,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
       <Link to="/about">About</Link>
       <Link to="/members">Members</Link>
       <Link to="/contact">Contact</Link>
+      <Link to="/profile">Profile</Link>
       {isAuthenticated ? (
         <>
           <Link to="/profile">Profile</Link>
