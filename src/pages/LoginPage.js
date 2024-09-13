@@ -1,55 +1,66 @@
+// LoginPage.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Updated import
+import '../styles.css'; // Import existing styles
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const navigate = useNavigate(); // Updated to useNavigate
 
-    const handleLogin = async (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
+        setError('');
 
-        try {
-            const response = await fetch(`http://localhost:5000/members?email=${email}&password=${password}`);
-            const data = await response.json();
-
-            if (data.length > 0) {
-                // Set user name to display in MembersPage
-                const userName = data[0].name;
-                alert(`Welcome, ${userName}!`);
-                navigate('/member', { state: { userName } }); // Pass userName via state
-            } else {
-                setErrorMessage('Invalid email or password.');
-            }
-        } catch (error) {
-            setErrorMessage('An error occurred. Please try again.');
-        }
+        // Fetch user data from db.json based on the email entered
+        fetch(`http://localhost:3001/users?email=${email}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.length > 0) {
+                    const user = data[0];
+                    if (user.password === password) {
+                        // Store user data in localStorage (or sessionStorage)
+                        localStorage.setItem('userProfile', JSON.stringify(user));
+                        // Redirect to profile page
+                        navigate('/profile'); // Updated to use navigate
+                    } else {
+                        setError('Incorrect password');
+                    }
+                } else {
+                    setError('User not found');
+                }
+            })
+            .catch(() => {
+                setError('Failed to fetch profile data');
+            });
     };
 
     return (
         <div className="container page">
             <h1>Login</h1>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleLogin}>
                 <div>
-                    <label>Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <input
                         type="email"
+                        id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
                         type="password"
+                        id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </div>
-                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 <button type="submit">Login</button>
             </form>
         </div>
