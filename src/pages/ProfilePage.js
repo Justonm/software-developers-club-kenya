@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import '../styles.css'; // Import existing styles
 
@@ -30,6 +31,17 @@ const ProfilePage = () => {
             ) : (
                 <p>Loading profile...</p>
             )}
+=======
+import React from 'react';
+import '../styles.css'; // Import existing styles
+import Profile from '../components/Profile';
+
+const ProfilePage = () => {
+    return (
+        <div className="container page">
+            <Profile />
+            {/* Add form or profile details here */}
+>>>>>>> e0a8400bbf40556771c40fdf703feb79703e8835
         </div>
     );
 };
