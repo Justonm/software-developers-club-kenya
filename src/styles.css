@@ -1,0 +1,86 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Page Styles */
+.page {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
