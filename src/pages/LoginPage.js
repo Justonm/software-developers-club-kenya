@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -15,10 +13,8 @@ const LoginPage = () => {
             const data = await response.json();
 
             if (data.length > 0) {
-                // Set user name to display in MembersPage
-                const userName = data[0].name;
-                alert(`Welcome, ${userName}!`);
-                navigate('/member', { state: { userName } }); // Pass userName via state
+                alert(`Welcome, ${data[0].name}!`);
+                onLogin(data[0].name); // Pass the user's name to the parent component
             } else {
                 setErrorMessage('Invalid email or password.');
             }
