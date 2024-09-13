@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles.css'; // Import existing styles
 
+<<<<<<< HEAD
 const Navbar = ({ loggedIn, onLogout, currentUser }) => {
     return (
         <nav className="navbar">
@@ -24,6 +24,29 @@ const Navbar = ({ loggedIn, onLogout, currentUser }) => {
             )}
         </nav>
     );
+=======
+const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
+  return (
+    <nav className="navbar">
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/members">Members</Link>
+      <Link to="/contact">Contact</Link>
+      <Link to="/profile">Profile</Link>
+      {isAuthenticated ? (
+        <>
+          <Link to="/profile">Profile</Link>
+          <button onClick={() => setIsAuthenticated(false)}>Logout</button> {/* Logout */}
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+        </>
+      )}
+    </nav>
+  );
+>>>>>>> loginsignup
 };
 
 export default Navbar;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 
 const SignupPage = () => {
@@ -69,6 +70,18 @@ const SignupPage = () => {
             </form>
         </div>
     );
+=======
+import React from 'react';
+import Signup from '../components/Signup'; // Path might vary
+
+const SignupPage = () => {
+  return (
+    <div className="signup-page">
+      <h1>Sign Up</h1>
+      <Signup /> {/* Renders the Signup form */}
+    </div>
+  );
+>>>>>>> loginsignup
 };
 
 export default SignupPage;
