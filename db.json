@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "members": [
       {
         "id": 1,
@@ -54,32 +53,3 @@
     ]
   }
  
-=======
-  "members": [
-    {
-      "id": "1",
-      "name": "Rabiya Abubakar",
-      "email": "rabiyaabubakar@example.com",
-      "password": "rabiyaabubakar"
-    },
-    {
-      "id": "2",
-      "name": "Joseph Irungu",
-      "email": "josephirungu@example.com",
-      "password": "josephirungu"
-    },
-    {
-      "id": "3",
-      "name": "Michael Mbugua",
-      "email": "michaelmbugua@example.com",
-      "password": "michaelmbugua"
-    },
-    {
-      "id": "4",
-      "name": "Justus Mutuku",
-      "email": "justusmutuku@example.com",
-      "password": "justusmutuku"
-    },
-  ]
-}
->>>>>>> e0a8400bbf40556771c40fdf703feb79703e8835
