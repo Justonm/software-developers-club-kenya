@@ -1,129 +1,215 @@
-<<<<<<< HEAD
-import React from 'react';
-import '../styles.css'; // Import existing styles
+import React, { useState, useEffect } from 'react';
+import "./Profile.css";
+const Profile = () => {
+    const [userData, setUserData] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+    const [updatedData, setUpdatedData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        project: '',
+        language: '',
+        likes: '',
+        image: ''
+    });
 
-const ProfilePage = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleImageChange = (e) => {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setUpdatedData(prevData => ({
+            ...prevData,
+            image: reader.result
+          }));
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    // Fetch user data based on logged-in user
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const userId = localStorage.getItem('loggedInUserId'); // Assuming logged-in user ID is stored in localStorage
+            if (userId) {
+                try {
+                    const response = await fetch(`http://localhost:5000/members/${userId}`); // Fetch specific user by ID
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const user = await response.json();
+                    if (user) {
+                        setUserData(user);
+                        setUpdatedData(user); // Populate form with current user data
+                    }
+                } catch (error) {
+                    console.error('Error fetching user data:', error);
+                }
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUpdatedData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    // Function to handle saving the updated data
+    const handleSave = async () => {
+        const userId = localStorage.getItem('loggedInUserId');
+        try {
+            const response = await fetch(`http://localhost:5000/members/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+            if (response.ok) {
+                const updatedUser = await response.json();
+                setUserData(updatedUser);
+                setIsEditing(false);
+                localStorage.setItem('loggedInUser', JSON.stringify(updatedUser)); // Update localStorage if necessary
+                console.log('Profile updated successfully');
+            } else {
+                throw new Error('Failed to update profile');
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
+    };
+
+    if (!userData) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="container page">
-            <h1>My Profile</h1>
-            <p>View and edit your profile information here.</p>
+
+
+            <div className="profile">
+
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', }}>
+                    <img 
+                        src={updatedData.image} 
+                        alt={userData.name} 
+                        className="profile-img" 
+                        style={{ width: '150px', height: '150px', borderRadius: '50%', alignItems: 'center' }}
+                    />
+                    {isEditing && (
+                        <div>
+                            <input 
+                                type="file" 
+                                accept="image/*" 
+                                onChange={handleImageChange} 
+                                style={{ marginTop: '10px' }}
+                            />
+                        </div>
+                    )}
+                </div>
+                
+                <div className="profile-details">
+                    <label>
+                        Name:
+                        <input
+                            type="text"
+                            name="name"
+                            value={updatedData.name}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+
+                    <label>
+                        Email:
+                        <input
+                            type="email"
+                            name="email"
+                            value={updatedData.email}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+
+                    
+                    <label>
+                        Password:
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            value={updatedData.password}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                            style={{ flex: '1' }}
+    
+                        />
+                        <button 
+                                type="button" 
+                                onClick={() => setShowPassword(!showPassword)} 
+                                style={{
+                                    marginLeft: '10px',
+                                    backgroundColor: 'transparent',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    color: '#007bff',
+                                }}
+                            >
+                                {showPassword ? "Hide" : "Show"}
+                            </button>
+                        </div>
+                        
+                    </label>
+                    
+
+                    <label>
+                        Project:
+                        <input
+                            type="text"
+                            name="project"
+                            value={updatedData.project}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+
+                    <label>
+                        Language:
+                        <input
+                            type="text"
+                            name="language"
+                            value={updatedData.language}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+
+                    <label>
+                        Likes:
+                        <input
+                            type="number"
+                            name="likes"
+                            value={updatedData.likes}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+            </div>
+
+            {!isEditing ? (
+                <button onClick={() => setIsEditing(true)}>Edit Profile</button>
+            ) : (
+                <button onClick={handleSave}>Save Changes</button>
+            )}
         </div>
     );
 };
 
-export default ProfilePage;
-=======
-import React, { useState, useEffect } from 'react';
-import '../styles.css'; // Import existing styles
-
-const Profile = ({ memberId }) => {
-  const [profileData, setProfileData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-  const [isEditing, setIsEditing] = useState(false);
-  const [message, setMessage] = useState('');
-
-  // Fetch member details when the component mounts
-  useEffect(() => {
-    const fetchMember = async () => {
-      const response = await fetch(`http://localhost:5000/members/${memberId}`);
-      const data = await response.json();
-      setProfileData({
-        name: data.name,
-        email: data.email,
-        password: '', // Leave password empty for security
-      });
-    };
-    
-    if (memberId) {
-      fetchMember();
-    }
-  }, [memberId]);
-
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Handle form submission to update profile
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch(`http://localhost:5000/members/${memberId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(profileData),
-    });
-
-    if (response.ok) {
-      setMessage('Profile updated successfully!');
-      setIsEditing(false);
-    } else {
-      setMessage('Failed to update profile. Please try again.');
-    }
-  };
-
-  return (
-    <div className="container page">
-      <h1>My Profile</h1>
-      <p>View and edit your profile information here.</p>
-      {message && <p className="message">{message}</p>}
-      {isEditing ? (
-        <form onSubmit={handleSubmit} className="profile-form">
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={profileData.name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={profileData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            New Password (Optional):
-            <input
-              type="password"
-              name="password"
-              value={profileData.password}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <button type="submit">Save Changes</button>
-          <button type="button" onClick={() => setIsEditing(false)}>
-            Cancel
-          </button>
-        </form>
-      ) : (
-        <div className="profile-details">
-          <p><strong>Name:</strong> {profileData.name}</p>
-          <p><strong>Email:</strong> {profileData.email}</p>
-          <button onClick={() => setIsEditing(true)}>Edit Profile</button>
-        </div>
-      )}
-    </div>
-  );
-};
-
 export default Profile;
->>>>>>> e0a8400bbf40556771c40fdf703feb79703e8835
