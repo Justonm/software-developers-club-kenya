@@ -1,73 +1,78 @@
-import React from 'react';
-<<<<<<< HEAD
+import React, { useState, useEffect } from 'react';
 import '../styles.css'; // Import existing styles
 
+const slides = [
+  {
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg',
+    alt: 'First slide',
+    caption: 'Join our community of skilled software developers.',
+  },
+  {
+    image: 'https://images.pexels.com/photos/574077/pexels-photo-574077.jpeg',
+    alt: 'Second slide',
+    caption: 'Collaborate, learn, and grow with like-minded peers.',
+  },
+  {
+    image: 'https://images.pexels.com/photos/6212801/pexels-photo-6212801.jpeg',
+    alt: 'Third slide',
+    caption: 'Access exclusive members-only resources and events.',
+  },
+];
+
 const HomePage = () => {
-    return (
-        <div className="container page">
-            <h1>Welcome to Software Developers Kenya Club</h1>
-            <p>Explore our features and join our community.</p>
-        </div>
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? slides.length - 1 : prevSlide - 1
     );
-=======
-import { Carousel } from 'react-responsive-carousel';
-import { Link } from 'react-router-dom';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import './HomePage.css'; 
+  };
 
-const HomePage = () => {
+  // Automatically change slides every 2 seconds
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      nextSlide();
+    }, 2000); // 2000ms = 2 seconds
+
+    return () => clearInterval(slideInterval); // Cleanup interval on unmount
+  }, []);
+
   return (
-    <div className="homepage">
-      <header className="header">
-        <div className="logo-container">
-          <img src="/images/logo.png" alt="Software Developers Club Logo" className="logo-image" />
-          <h1 className="club-name">Software Developers Club</h1>
-        </div>
-        <button className="login-button">
-          <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
+    <div className="container page">
+      <h1>Welcome to Software Developers Kenya Club</h1>
+      <p>Explore our features and join our community.</p>
+
+      {/* Carousel */}
+      <div className="carousel">
+        <button className="carousel-btn prev" onClick={prevSlide}>
+          &#10094;
         </button>
-      </header>
+        <img
+          src={slides[currentSlide].image}
+          alt={slides[currentSlide].alt}
+          className="slide-image"
+        />
+        <div className="caption">{slides[currentSlide].caption}</div>
+        <button className="carousel-btn next" onClick={nextSlide}>
+          &#10095;
+        </button>
+      </div>
 
-      <section className="carousel-section">
-        <div className="carousel-overlay">
-          <h1>Welcome to the Software Developers Club</h1>
-          <button className="login-button">
-            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
-          </button>
-        </div>
-        <Carousel className="carousel-container" showThumbs={false} autoPlay infiniteLoop>
-          <div>
-            <img src="/images/community1.jpg" alt="Software Community 1" />
-          </div>
-          <div>
-            <img src="/images/community2.jpg" alt="Software Community 2" />
-          </div>
-          <div>
-            <img src="/images/community3.jpg" alt="Software Community 3" />
-          </div>
-        </Carousel>
-      </section>
-
-      <section className="welcome-section">
-      <section className="welcome-section">
-  <p>
-    We are a community of passionate developers who collaborate, learn, and grow together. 
-    Join us to enhance your skills, contribute to exciting projects, and network with 
-    like-minded individuals. Together, we can build a better future for the software industry.
-    Our club offers numerous opportunities to engage in meaningful projects, attend workshops, 
-    and participate in hackathons. Whether you are a beginner or an experienced developer, 
-    there is always something new to learn and contribute.
-  </p>
-</section>
-
-      </section>
-
-      <footer className="footer">
-        © 2024 Software Developers Club
-      </footer>
+      <div className="landing-info">
+        <h2>Why Join Us?</h2>
+        <p>
+          As a member of Software Developers Kenya Club, you get the opportunity to
+          connect with top developers, access exclusive learning resources, and
+          collaborate on exciting projects.
+        </p>
+        <a href="/signup" className="join-btn">Join Now</a>
+      </div>
     </div>
   );
->>>>>>> e0a8400bbf40556771c40fdf703feb79703e8835
 };
 
 export default HomePage;

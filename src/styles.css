@@ -60,22 +60,23 @@ button:hover {
 
 /* Navbar Styles */
 .navbar {
-    background-color: #333;
-    color: white;
+    background-color: #00fefb;
+    color: #000;
     padding: 10px;
     display: flex;
     justify-content: space-around;
 }
 
 .navbar a {
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 10px;
     font-size: 1rem;
 }
 
 .navbar a:hover {
-    background-color: #555;
+    background-color: #3211f2;
+    color: #fff;
 }
 
 /* Page Styles */
@@ -83,4 +84,89 @@ button:hover {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+.page {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.landing-info {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.landing-info h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.landing-info p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.join-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #0056b3;
 }
