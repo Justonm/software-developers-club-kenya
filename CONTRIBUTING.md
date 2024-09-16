@@ -1,5 +1,5 @@
 ### Justus Mutuku ( Scrum Master)
-- Craeted the project repository
+- Created the project repository
 - Came up with the project
 - Created About
   
