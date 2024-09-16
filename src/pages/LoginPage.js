@@ -17,8 +17,8 @@ const LoginPage = ({ onLogin }) => {
             if (data.length > 0) {
                 const user = data[0];
                 localStorage.setItem('loggedInUserId', user.id);
-                alert(`Welcome, ${data[0].name}!`);
-                onLogin(data[0].name); // Pass the user's name to the parent component
+                alert(`Welcome, ${user.name}!`);
+                onLogin(user.name); // Pass the user's name to the parent component
                 navigate('/profile');
             } else {
                 setErrorMessage('Invalid email or password.');
