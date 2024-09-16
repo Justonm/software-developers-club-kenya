@@ -11,7 +11,6 @@ const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,7 +19,6 @@ const ContactPage = () => {
     });
   };
 
- 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,20 +26,21 @@ const ContactPage = () => {
       const response = await fetch('https://software-database.vercel.app/members', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        // Form submission successful
         setIsSubmitted(true);
         setError(null);
       } else {
-        throw new Error('Failed to submit form');
+        throw new Error('Failed to submit form.');
       }
     } catch (err) {
       setError('Error submitting form. Please try again later.');
+      console.error(err);
     }
   };
 
