@@ -9,7 +9,7 @@ const MembersPage = () => {
 
     useEffect(() => {
         // Fetch all members from the JSON server
-        fetch(`${process.env.REACT_APP_API_URL}`) // Using backticks for template literal
+        fetch('http://localhost:5000/members')
             .then((response) => response.json())
             .then((data) => setMembers(data))
             .catch((error) => console.error('Error fetching members:', error));
@@ -23,7 +23,7 @@ const MembersPage = () => {
             ) : (
                 <p>Please log in to see member content.</p>
             )}
-
+            
             <div className="members-grid">
                 {members.length > 0 ? (
                     members.map((member) => (
