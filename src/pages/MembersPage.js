@@ -9,7 +9,7 @@ const MembersPage = () => {
 
     useEffect(() => {
         // Fetch all members from the JSON server
-        fetch('http://localhost:5000/members')
+        fetch('https://software-database.vercel.app/members')
             .then((response) => response.json())
             .then((data) => setMembers(data))
             .catch((error) => console.error('Error fetching members:', error));
