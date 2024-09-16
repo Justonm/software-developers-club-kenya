@@ -36,7 +36,7 @@ const Profile = () => {
             const userId = localStorage.getItem('loggedInUserId');
             if (userId) {
                 try {
-                    const response = await fetch('https://software-database.vercel.app/members');
+                    const response = await fetch('https://software-database.vercel.app/members/${userId}');
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -63,10 +63,28 @@ const Profile = () => {
         }));
     };
 
-    const handleSave = () => {
-        console.log('Updated User Data:', updatedData);
-        setUserData(updatedData);
-        setIsEditing(false);
+    const handleSave = async () => {
+        const userId = localStorage.getItem('loggedInUserId');
+        try {
+            const response = await fetch(`https://software-database.vercel.app/members/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+            if (response.ok) {
+                const updatedUser = await response.json();
+                setUserData(updatedUser);
+                setIsEditing(false);
+                localStorage.setItem('loggedInUser', JSON.stringify(updatedUser)); // Update localStorage if necessary
+                console.log('Profile updated successfully');
+            } else {
+                throw new Error('Failed to update profile');
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
     };
 
     if (!userData) {
