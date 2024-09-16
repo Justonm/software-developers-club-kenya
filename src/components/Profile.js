@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "./Profile.css";
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -13,38 +13,35 @@ const Profile = () => {
         image: ''
     });
 
-    // State to manage password visibility
     const [showPassword, setShowPassword] = useState(false);
 
-    // Handle user profile image change
     const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setUpdatedData(prevData => ({
-                    ...prevData,
-                    image: reader.result
-                }));
-            };
-            reader.readAsDataURL(file);
-        }
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setUpdatedData(prevData => ({
+            ...prevData,
+            image: reader.result
+          }));
+        };
+        reader.readAsDataURL(file);
+      }
     };
-
+    // Fetch user data based on logged-in user
     useEffect(() => {
         const fetchUserData = async () => {
-            const userId = localStorage.getItem('loggedInUserId');
+            const userId = localStorage.getItem('loggedInUserId'); // Assuming logged-in user ID is stored in localStorage
             if (userId) {
                 try {
-                    const response = await fetch('https://software-database.vercel.app/members/${userId}');
+                    const response = await fetch(`https://software-database.vercel.app/members/${userId}`); // Fetch specific user by ID
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    const data = await response.json();
-                    const user = data.find(member => member.id === parseInt(userId)); // Ensure ID is an integer
+                    const user = await response.json();
                     if (user) {
                         setUserData(user);
-                        setUpdatedData(user);
+                        setUpdatedData(user); // Populate form with current user data
                     }
                 } catch (error) {
                     console.error('Error fetching user data:', error);
@@ -63,6 +60,7 @@ const Profile = () => {
         }));
     };
 
+    // Function to handle saving the updated data
     const handleSave = async () => {
         const userId = localStorage.getItem('loggedInUserId');
         try {
@@ -93,16 +91,16 @@ const Profile = () => {
 
     return (
         <div className="container page">
-            <h1>My Profile</h1>
-            <p>View and edit your profile information here.</p>
+
 
             <div className="profile">
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', }}>
                     <img 
                         src={updatedData.image} 
                         alt={userData.name} 
                         className="profile-img" 
-                        style={{ width: '150px', height: '150px', borderRadius: '50%', marginRight: '20px' }}
+                        style={{ width: '150px', height: '150px', borderRadius: '50%', alignItems: 'center' }}
                     />
                     {isEditing && (
                         <div>
@@ -115,7 +113,7 @@ const Profile = () => {
                         </div>
                     )}
                 </div>
-
+                
                 <div className="profile-details">
                     <label>
                         Name:
@@ -139,20 +137,20 @@ const Profile = () => {
                         />
                     </label>
 
+                    
                     <label>
                         Password:
-                        {/* Flexbox wrapper to align input and button side by side */}
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <input
-                                type={showPassword ? "text" : "password"}  // Toggle between text and password
-                                name="password"
-                                value={updatedData.password}
-                                disabled={!isEditing}
-                                onChange={handleInputChange}
-                                style={{ flex: '1' }}  // Make input fill remaining space
-                            />
-                            {/* Add a button to toggle password visibility */}
-                            <button 
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            value={updatedData.password}
+                            disabled={!isEditing}
+                            onChange={handleInputChange}
+                            style={{ flex: '1' }}
+    
+                        />
+                        <button 
                                 type="button" 
                                 onClick={() => setShowPassword(!showPassword)} 
                                 style={{
@@ -166,7 +164,9 @@ const Profile = () => {
                                 {showPassword ? "Hide" : "Show"}
                             </button>
                         </div>
+                        
                     </label>
+                    
 
                     <label>
                         Project:
