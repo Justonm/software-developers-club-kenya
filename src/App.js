@@ -23,6 +23,7 @@ const App = () => {
   const handleLogout = () => {
     setLoggedIn(false);
     setCurrentUser(null);
+    localStorage.removeItem('loggedInUserId');
   };
 
   return (
