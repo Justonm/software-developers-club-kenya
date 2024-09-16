@@ -38,17 +38,17 @@
       "project": "Interactive Shopping List",
       "language": "JavaScript",
       "likes": 120,
-      "image": "https://randomuser.me/api/portraits/women/1.jpg"
+      "image": "https://randomuser.me/api/portraits/women/3.jpg"
     },
     {
       "id": "5",
-      "name": "Maryam Abubakar",
-      "email": "rabiyaabubakar@example.com",
-      "password": "rabiyaabubakar",
+      "name": "Maryam Memsap",
+      "email": "maryammemsap@example.com",
+      "password": "maryammemsap",
       "project": "Interactive Shopping List",
       "language": "JavaScript",
       "likes": 920,
-      "image": "https://randomuser.me/api/portraits/women/6.jpg"
+      "image": "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
      "id": "6",
