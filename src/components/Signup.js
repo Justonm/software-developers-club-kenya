@@ -9,7 +9,7 @@ function Signup() {
     const handleSignup = (e) => {
         e.preventDefault();
         // Create a new member entry in db.json
-        fetch('http://localhost:3000/members', {
+        fetch('https://software-database.vercel.app/members', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })
@@ -40,7 +40,7 @@ function Signup() {
 
     try {
       // Check if the user already exists in the database
-      const existingUsersResponse = await fetch('http://localhost:3000/members');
+      const existingUsersResponse = await fetch('https://software-database.vercel.app/members');
       const existingUsers = await existingUsersResponse.json();
 
       const userExists = existingUsers.find((user) => user.email === email);
