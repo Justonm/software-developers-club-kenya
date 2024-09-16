@@ -10,7 +10,7 @@ function Login({ setIsAuthenticated }) {
     const handleLogin = (e) => {
         e.preventDefault();
         // Simulate login by checking db.json (could be improved with actual API)
-        fetch('http://localhost:3000/members')
+        fetch('https://software-database.vercel.app/members')
             .then(res => res.json())
             .then(members => {
                 const member = members.find(m => m.email === email && m.password === password);
