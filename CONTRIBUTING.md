@@ -11,7 +11,8 @@
 
 ### Joseph 
 - Contact page
-- Members only page
+- About page
+- Home Page
 
   ### Michael Mbugua
 - Profile page
