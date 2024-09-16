@@ -29,7 +29,7 @@ code {
 
 /* Card styling with background */
 .member-card {
-    background-color: beige;
+    background-color: #fff;
    background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'); /* Optional subtle pattern */
     background-size: cover;
     border: 1px solid #ddd;
