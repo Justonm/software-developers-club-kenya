@@ -11,7 +11,7 @@ const SignupPage = () => {
         const newMember = { name, email, password };
 
         try {
-            const response = await fetch('http://localhost:5000/members', {
+            const response = await fetch('https://software-database.vercel.app/members', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newMember),
