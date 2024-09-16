@@ -34,7 +34,7 @@ const Profile = () => {
             const userId = localStorage.getItem('loggedInUserId'); // Assuming logged-in user ID is stored in localStorage
             if (userId) {
                 try {
-                    const response = await fetch(`http://localhost:5000/members/${userId}`); // Fetch specific user by ID
+                    const response = await fetch(`https://software-database.vercel.app/members/${userId}`); // Fetch specific user by ID
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -64,7 +64,7 @@ const Profile = () => {
     const handleSave = async () => {
         const userId = localStorage.getItem('loggedInUserId');
         try {
-            const response = await fetch(`http://localhost:5000/members/${userId}`, {
+            const response = await fetch(`https://software-database.vercel.app/members/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
