@@ -15,7 +15,7 @@ code {
 /* Container and page styling with #00fefb background */
 .container.page {
     margin: 20 auto;
-    padding: 20px;
+    padding: 50px;
     max-width: 1200px;
     background-color: #00fefb; /* Bright cyan background for the entire page */
     border-radius: 10px;
@@ -25,7 +25,7 @@ code {
 /* Container and page styling with #00fefb background */
 .container.page {
     margin: 30 auto;
-    padding: 20px;
+    padding: 50px;
     max-width: 1200px;
     background-color: #00fefb; /* Bright cyan background for the entire page */
     border-radius: 10px;
