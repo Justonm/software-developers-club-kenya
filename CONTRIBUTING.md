@@ -16,4 +16,5 @@
 
   ### Michael Mbugua
 - Profile page
+- Sign Up
 
