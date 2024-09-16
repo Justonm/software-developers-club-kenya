@@ -22,6 +22,16 @@ code {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Container and page styling with #00fefb background */
+.container.page {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #00fefb; /* Bright cyan background for the entire page */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Grid layout for the member cards */
 .members-grid {
     display: grid;
@@ -73,15 +83,7 @@ code {
         grid-template-columns: 1fr;
     }
 }
-/* Container and page styling with #00fefb background */
-.container.page {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 1200px;
-    background-color: #00fefb; /* Bright cyan background for the entire page */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 /* Event list and card styling */
 .events-list {
@@ -92,7 +94,7 @@ code {
 }
 
 .event-card {
-    background-color: #fff; /* White background for event card */
+    background-color: white; /* White background for event card */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
