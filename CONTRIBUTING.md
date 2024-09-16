@@ -5,11 +5,11 @@
   
 
 ### Rabiya Abubakar
-- Memmbers page
+- Members page
 - Members only page
+- db.json
 
 ### Joseph 
-- db.json
 - Memmbers page
 - Members only page
 
