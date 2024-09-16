@@ -29,8 +29,8 @@ code {
 
 /* Card styling with background */
 .member-card {
-    background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
-    background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'); /* Optional subtle pattern */
+    background-color: beige;
+   background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'); /* Optional subtle pattern */
     background-size: cover;
     border: 1px solid #ddd;
     border-radius: 8px;
