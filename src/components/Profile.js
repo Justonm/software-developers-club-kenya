@@ -36,7 +36,7 @@ const Profile = () => {
             const userId = localStorage.getItem('loggedInUserId');
             if (userId) {
                 try {
-                    const response = await fetch('http://localhost:5000/members');
+                    const response = await fetch('https://software-database.vercel.app/members');
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
