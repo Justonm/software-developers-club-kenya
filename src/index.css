@@ -27,9 +27,11 @@ code {
     margin-top: 20px;
 }
 
-/* Card styling */
+/* Card styling with background */
 .member-card {
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+    background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'); /* Optional subtle pattern */
+    background-size: cover;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -69,5 +71,4 @@ code {
     .members-grid {
         grid-template-columns: 1fr;
     }
-}   
-   
+}
