@@ -41,20 +41,24 @@
       "image": "https://randomuser.me/api/portraits/women/1.jpg"
     },
     {
-      "id": "4",
+      "id": "5",
       "name": "Maryam Abubakar",
       "email": "rabiyaabubakar@example.com",
       "password": "rabiyaabubakar",
       "project": "Interactive Shopping List",
       "language": "JavaScript",
       "likes": 120,
-      "image": "https://randomuser.me/api/portraits/women/1.jpg"
+      "image": "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
-      "id": "2cf1",
-      "name": "Julius Mwangi",
-      "email": "juliusmwangi@example.com",
-      "password": "juliusmwangi"
+     "id": "6",
+  "name": "Julius Mwangi",
+  "email": "juliusmwangi@example.com",
+  "password": "juliusmwangi",
+  "project": "Inventory Management System",
+  "language": "Python",
+  "likes": 85,
+  "image": "https://randomuser.me/api/portraits/men/45.jpg"
     }
   ]
 }
