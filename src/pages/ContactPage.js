@@ -23,18 +23,23 @@ const ContactPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://software-database.vercel.app/members', {
+      const response = await fetch('https://software-database.vercel.app/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         setError(null);
+        setFormData({ name: '', email: '', message: '' }); // Clear form fields
       } else {
         throw new Error('Failed to submit form.');
       }
