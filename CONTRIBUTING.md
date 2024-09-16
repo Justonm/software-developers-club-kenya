@@ -10,9 +10,9 @@
 - db.json
 
 ### Joseph 
-- Memmbers page
+- Contact page
 - Members only page
 
   ### Michael Mbugua
-- Memmbers page
-- Members only page
+- Profile page
+
