@@ -49,16 +49,6 @@
       "language": "JavaScript",
       "likes": 920,
       "image": "https://randomuser.me/api/portraits/women/2.jpg"
-    },
-    {
-     "id": "6",
-  "name": "Julius Mwangi",
-  "email": "juliusmwangi@example.com",
-  "password": "juliusmwangi",
-  "project": "Inventory Management System",
-  "language": "Python",
-  "likes": 85,
-  "image": "https://randomuser.me/api/portraits/men/5.jpg"
     }
   ]
 }
