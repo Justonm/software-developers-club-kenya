@@ -1,3 +1,7 @@
+# software developers club kenya
+
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -28,13 +32,13 @@
 
 1. Open the file in your browser to view the website.
 2. Use the login button to log in or sign up.
-3. learn more about the club from about page and conta us.
-4. View members in the club and get tosee their details for connection.
+3. learn more about the club from about page and contactus.
+4. View members in the club and get to see their details for connection.
 5. view upcoming events and register.
 
 ## Live Demo
 
 Check out the live version of the website here: 
-[software-developers-club-kenya live](https://software-developers-club-kenya.vercel.app/members)
+[software-developers-club-kenya live](https://software-developers-club-kenya.vercel.app/)
 
 
