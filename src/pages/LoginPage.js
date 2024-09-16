@@ -9,7 +9,7 @@ const LoginPage = ({ onLogin }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5000/members?email=${email}&password=${password}`);
+            const response = await fetch(`https://software-database.vercel.app/members?email=${email}&password=${password}`);
             const data = await response.json();
 
             if (data.length > 0) {
