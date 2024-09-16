@@ -1,4 +1,15 @@
 # software developers club kenya
+## Overview
+
+ The Software Developers Club is a React-based web application designed to manage and showcase a community of software developers. 
+
+## Features
+
+- ** User Authentication**: Members can log in with their credentials. Upon successful login, they gain access to exclusive content and functionality.
+- **Property Listings**: Detailed property listings with images, descriptions, prices, and contact information.
+- **Testimonials**: Users can view and submit testimonials.
+- **Login and Signup**: Secure login and signup functionality for users.
+- **Property Details**: Detailed view of properties including owner contact information.
 
 
 
