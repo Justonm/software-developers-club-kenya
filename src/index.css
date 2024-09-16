@@ -12,11 +12,14 @@ code {
     monospace;
 }
 
-/* Container and page styling */
+/* Container and page styling with #00fefb background */
 .container.page {
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
+    background-color: #00fefb; /* Bright cyan background for the entire page */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Grid layout for the member cards */
@@ -27,6 +30,49 @@ code {
     margin-top: 20px;
 }
 
+/* Member card styling */
+.member-card {
+    background-color: #fff; /* White background for member card */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.member-card:hover {
+    transform: scale(1.05);
+}
+
+/* Image styling */
+.member-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Details within the card */
+.member-details h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.member-details p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /* Container and page styling with #00fefb background */
 .container.page {
     margin: 0 auto;
@@ -46,7 +92,7 @@ code {
 }
 
 .event-card {
-    background-color: #00fefb; /* Bright cyan background for the event card */
+    background-color: #fff; /* White background for event card */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
@@ -87,4 +133,3 @@ code {
         grid-template-columns: 1fr;
     }
 }
-
