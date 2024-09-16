@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ onLogin }) => {
+    const navigate = useNavigate(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -13,8 +15,11 @@ const LoginPage = ({ onLogin }) => {
             const data = await response.json();
 
             if (data.length > 0) {
+                const user = data[0];
+                localStorage.setItem('loggedInUserId', user.id);
                 alert(`Welcome, ${data[0].name}!`);
                 onLogin(data[0].name); // Pass the user's name to the parent component
+                navigate('/profile');
             } else {
                 setErrorMessage('Invalid email or password.');
             }
