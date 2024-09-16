@@ -1,6 +1,7 @@
 ### Justus Mutuku ( Scrum Master)
 - Created the project repository
-- Came up with the project
+- login page
+- signup page
 
   
 
