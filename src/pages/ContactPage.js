@@ -1,26 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ContactPage.css';
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+ 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('https://software-database.vercel.app/members', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        // Form submission successful
+        setIsSubmitted(true);
+        setError(null);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (err) {
+      setError('Error submitting form. Please try again later.');
+    }
+  };
+
   return (
     <div className="contact-page">
       <header className="contact-header">
         <h1>Contact Us</h1>
       </header>
+
       <section className="contact-content">
-        <form className="contact-form">
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-          
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-          
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-          
-          <button type="submit">Send Message</button>
-        </form>
+        {isSubmitted ? (
+          <p className="success-message">Your message has been sent successfully!</p>
+        ) : (
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+
+            <label htmlFor="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            ></textarea>
+
+            <button type="submit">Send Message</button>
+          </form>
+        )}
+
+        {error && <p className="error-message">{error}</p>}
       </section>
+
       <footer className="contact-footer">
         <p>Address: 34567</p>
         <p>Email: josephirungu890@gmail.com</p>
